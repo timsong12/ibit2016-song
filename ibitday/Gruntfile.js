@@ -47,7 +47,10 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    'spec/fixtures/fixture.html': ['views/fixture.jade', '$ELF_TEMPLATES/JadeMixins/*.jade']
+                    'spec/fixtures/home-page.html': ['views/home-page.jade'],
+                    'spec/fixtures/first-page.html': ['views/first-page.jade'],
+                    'spec/fixtures/about-page.html': ['views/about-page.jade']
+//                    ,'spec/fixtures/fixture.html': ['views/fixture.jade', '$ELF_TEMPLATES/JadeMixins/*.jade']
                 }
             }
         },
@@ -72,9 +75,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-jsbeautifier');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-jade');
-    grunt.loadNpmTasks('grunt-shell');
+    //grunt.loadNpmTasks('grunt-shell');
     grunt.registerTask('fixture', ['exec:stripExtends', 'jade', 'karma']);
     grunt.registerTask('beautify', ['jsbeautifier']);
     grunt.registerTask('check', ['beautify', 'jscs', 'jshint']);
-    grunt.registerTask('test', ['jshint', 'karma']);
+    grunt.registerTask('test', ['jshint', 'jade', 'karma']);
 };
